@@ -1,0 +1,12 @@
+{
+    "name": "coder",
+    "version" : "1.0.0.0",
+    "description" : "",
+    "main" : "ProductManager.js",
+    "scripts": {
+        "test" : "echo\"Error: no test specifified\" && exit 1"
+    },
+    "autor": "",
+    "license":"ISC",
+    "type":"module"
+}
