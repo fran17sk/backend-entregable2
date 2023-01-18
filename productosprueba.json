@@ -12,19 +12,18 @@
 		"name": "producto prueba",
 		"description": "Este es un producto prueba",
 		"price": 200,
-		"code": "abc123",
+		"code": "abc1235",
 		"urlimg": "Sin Imagen",
 		"stock": 25,
-		"id": 2
+		"id": 3
 	},
 	{
-		"name": "producto prueba 2",
+		"name": "producto prueba 2 eliminado",
 		"description": "Este es un producto prueba 2 ",
 		"price": 200,
-		"code": "abc1234",
+		"code": "abc123456",
 		"urlimg": "Sin Imagen",
 		"stock": 35,
-		"id": 3,
-		"available": false
+		"id": 4
 	}
 ]

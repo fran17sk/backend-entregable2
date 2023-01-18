@@ -20,9 +20,13 @@ class ProductManager {
         }
     }
     getNextId(){
-        const count = this.products.length
-        const nextId = (count > 0) ? this.products[count - 1].id + 1 : 1; 
-        return nextId;
+        let id = 1;
+        this.products.forEach((p)=>{
+            if(p.id>id){
+                id = p.id
+            }
+        })
+        return id+1
     }
 
     async addProduct(product){
@@ -79,6 +83,7 @@ class ProductManager {
                 return product
             }else{
                 throw new Error('Product not found')
+                return false
             }
         }
         catch(error){
@@ -106,13 +111,14 @@ class ProductManager {
     async deleteProductById(path,id){
         try{
             const products = await this.getProducts(path);
-            const index = products.findIndex((p)=>p.id===id)
-            if (index>=0) {
-                products[index].available=false;
-                await fs.writeFileSync(this.path,JSON.stringify(products,null,'\t'))
-                console.log('Producto eliminado')
+            const product = await this.getproductById(path,id)
+            if(product){
+                const newproducts = products.filter((p)=>p.id!==id)
+                fs.unlinkSync(path)
+                fs.writeFileSync(path, JSON.stringify(newproducts))
+                console.log("Archivo eliminado")
             }else{
-                console.log('El producto no existe.')
+                console.log('Error al eliminar')
             }
         }
         catch(error){
@@ -124,12 +130,12 @@ class ProductManager {
 const productManager = new ProductManager('./productosprueba.json')
 
 const product1 = new Product('producto prueba','Este es un producto prueba',200,"abc123",'Sin Imagen',25)
-const product2 = new Product('producto prueba 2','Este es un producto prueba 2 ',200,"abc1234",'Sin Imagen',35)
-const product3 = new Product('producto prueba','Este es un producto prueba',200,"abc123",'Sin Imagen',25)
-productManager.addProduct(product1)
+const product2 = new Product('producto prueba 2 eliminado','Este es un producto prueba 2 ',200,"abc123456",'Sin Imagen',35)
+const product3 = new Product('producto prueba','Este es un producto prueba',200,"abc1235",'Sin Imagen',25)
+// productManager.addProduct(product1)
 productManager.addProduct(product2)
-productManager.addProduct(product3)
+// productManager.addProduct(product3)
 productManager.showProducts('./productosprueba.json')
-productManager.getproductById('./productosprueba.json',1)
-productManager.deleteProductById('./productosprueba.json',3)
-productManager.showProducts('./productosprueba.json')
+// productManager.getproductById('./productosprueba.json',1)
+// productManager.deleteProductById('./productosprueba.json',2)
+// productManager.showProducts('./productosprueba.json')
