@@ -127,15 +127,34 @@ class ProductManager {
     }
 }
 
-const productManager = new ProductManager('./productosprueba.json')
 
-const product1 = new Product('producto prueba','Este es un producto prueba',200,"abc123",'Sin Imagen',25)
-const product2 = new Product('producto prueba 2 eliminado','Este es un producto prueba 2 ',200,"abc123456",'Sin Imagen',35)
-const product3 = new Product('producto prueba','Este es un producto prueba',200,"abc1235",'Sin Imagen',25)
-// productManager.addProduct(product1)
-productManager.addProduct(product2)
-// productManager.addProduct(product3)
-productManager.showProducts('./productosprueba.json')
-// productManager.getproductById('./productosprueba.json',1)
-// productManager.deleteProductById('./productosprueba.json',2)
-// productManager.showProducts('./productosprueba.json')
+function prueba(){
+    const productManager = new ProductManager('./productosprueba.json')
+    //ADDPRODUCT
+    const product2 = new Product('producto prueba 2','Este es un producto prueba 2',200,"abc12",'Sin Imagen',25)
+    const product3 = new Product('producto prueba 3','Este es un producto prueba 3',300,"abc123",'Sin Imagen',35)
+    const product4 = new Product('producto prueba 4','Este es un producto prueba 4',400,"abc1234",'Sin Imagen',45)
+    productManager.addProduct(product2)
+    productManager.addProduct(product3)
+    productManager.addProduct(product4)
+    productManager.showProducts('./productosprueba.json')
+
+    //BUSQUEDA POR ID
+    productManager.getproductById('./productosprueba.json',1) //ID=1
+    productManager.getproductById('./productosprueba.json',3) //ID=3
+
+    //ELIMINACION DE UN PRODUCTO POR ID
+    productManager.deleteProductById('./productosprueba.json',2) //ID=2 (PRODUCTO PRUEBA 2)
+    productManager.showProducts('./productosprueba.json')
+    //agregamos uno nuevo para verificar que no se repita el ID
+    const product5 = new Product('producto prueba 5','Este es un producto prueba 5',500,"abc12345",'Sin Imagen',55)
+    productManager.addProduct(product5)
+    productManager.showProducts('./productosprueba.json')
+
+    //MODIFICACION DE UN PRODUCTO POR ID
+    const newproduct3 = new Product('producto prueba 3 ACTUALIZADO','Este es un producto FUE ACTUALIZADO',3000,"abc123",'Sin Imagen',335)
+    productManager.updateProductById('./productosprueba.json',3,newproduct3)
+    productManager.showProducts('./productosprueba.json')
+}
+
+prueba()

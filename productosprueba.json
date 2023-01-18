@@ -1,29 +1,9 @@
-[
-	{
-		"name": "productoprueba",
-		"description": "este es un producto prueba",
-		"price": 125,
-		"code": "aaaaa",
-		"urlimg": "urlimg",
-		"stock": 15,
-		"id": 1
-	},
-	{
-		"name": "producto prueba",
-		"description": "Este es un producto prueba",
-		"price": 200,
-		"code": "abc1235",
-		"urlimg": "Sin Imagen",
-		"stock": 25,
-		"id": 3
-	},
-	{
-		"name": "producto prueba 2 eliminado",
-		"description": "Este es un producto prueba 2 ",
-		"price": 200,
-		"code": "abc123456",
-		"urlimg": "Sin Imagen",
-		"stock": 35,
-		"id": 4
-	}
-]
+[{
+    "name": "producto prueba 1",
+    "description": "este es un producto prueba",
+    "price": 125,
+    "code": "aaaaa",
+    "urlimg": "urlimg",
+    "stock": 15,
+    "id": 1
+}]
