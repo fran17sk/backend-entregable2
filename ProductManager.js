@@ -94,13 +94,15 @@ class ProductManager {
     async updateProductById(path,id,product){
         try{
             const products = await this.getProducts(path)
-            const index = products.findIndex((p)=>p.id===id)
-            if (index) {
+            const find = await this.getproductById(path,id)
+            const index = products.findIndex((p)=>p.id === id)
+            if (find) {
                 products[index]={...products[index],...product}
-                await fs.readFileSync(this.path,JSON.stringify(products,null,'\t'))
+                fs.unlinkSync(path)
+                fs.writeFileSync(path, JSON.stringify(products))
                 console.log('Producto actualizado')
             }else{
-                throw new Error('El producto no existe')
+                throw new Error('El id del producto no existe')
             }
         }
         catch(error){
@@ -139,22 +141,23 @@ function prueba(){
     productManager.addProduct(product4)
     productManager.showProducts('./productosprueba.json')
 
-    //BUSQUEDA POR ID
-    productManager.getproductById('./productosprueba.json',1) //ID=1
-    productManager.getproductById('./productosprueba.json',3) //ID=3
+    // //BUSQUEDA POR ID
+    // productManager.getproductById('./productosprueba.json',1) //ID=1
+    // productManager.getproductById('./productosprueba.json',3) //ID=3
 
-    //ELIMINACION DE UN PRODUCTO POR ID
-    productManager.deleteProductById('./productosprueba.json',2) //ID=2 (PRODUCTO PRUEBA 2)
-    productManager.showProducts('./productosprueba.json')
-    //agregamos uno nuevo para verificar que no se repita el ID
-    const product5 = new Product('producto prueba 5','Este es un producto prueba 5',500,"abc12345",'Sin Imagen',55)
-    productManager.addProduct(product5)
-    productManager.showProducts('./productosprueba.json')
+    // //ELIMINACION DE UN PRODUCTO POR ID
+    // productManager.deleteProductById('./productosprueba.json',2) //ID=2 (PRODUCTO PRUEBA 2)
+    // productManager.showProducts('./productosprueba.json')
+    // //agregamos uno nuevo para verificar que no se repita el ID
+    // const product5 = new Product('producto prueba 5','Este es un producto prueba 5',500,"abc12345",'Sin Imagen',55)
+    // productManager.addProduct(product5)
+    // productManager.showProducts('./productosprueba.json')
 
-    //MODIFICACION DE UN PRODUCTO POR ID
-    const newproduct3 = new Product('producto prueba 3 ACTUALIZADO','Este es un producto FUE ACTUALIZADO',3000,"abc123",'Sin Imagen',335)
-    productManager.updateProductById('./productosprueba.json',3,newproduct3)
-    productManager.showProducts('./productosprueba.json')
+    // //MODIFICACION DE UN PRODUCTO POR ID
+    //const newproduct3 = new Product('producto prueba 3 ACTUALIZADO','Este es un producto FUE ACTUALIZADO',3000,"abc123",'Sin Imagen',335)
+    //productManager.updateProductById('./productosprueba.json',3,newproduct3)
+    //productManager.showProducts('./productosprueba.json')
+    
 }
 
 prueba()
