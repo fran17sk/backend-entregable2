@@ -1,9 +1,57 @@
-[{
-    "name": "producto prueba 1",
-    "description": "este es un producto prueba",
-    "price": 125,
-    "code": "aaaaa",
-    "urlimg": "urlimg",
-    "stock": 15,
-    "id": 1
-}]
+[
+	{
+		"name": "producto prueba 1",
+		"description": "este es un producto prueba",
+		"price": 125,
+		"code": "abc1234",
+		"urlimg": "urlimg",
+		"stock": 15,
+		"id": 1
+	},
+	{
+		"name": "producto prueba 2",
+		"description": "este es un producto prueba",
+		"price": 150,
+		"code": "abc123",
+		"urlimg": "urlimg",
+		"stock": 25,
+		"id": 2
+	},
+	{
+		"name": "producto prueba 3",
+		"description": "este es un producto prueba",
+		"price": 125,
+		"code": "abc12345",
+		"urlimg": "urlimg",
+		"stock": 35,
+		"id": 3
+	},
+	{
+		"name": "producto prueba 3",
+		"description": "este es un producto prueba",
+		"price": 1255,
+		"code": "abc123456",
+		"urlimg": "urlimg",
+		"stock": 45,
+		"id": 4
+	},
+	{
+		"name": "producto prueba 5",
+		"description": "este es un producto prueba",
+		"price": 1256,
+		"code": "abc1234567",
+		"urlimg": "urlimg",
+		"stock": 55,
+		"id": 5
+	},
+	{
+		"name": "producto prueba 6",
+		"description": "este es un producto prueba",
+		"price": 126,
+		"code": "abc12345678",
+		"urlimg": "urlimg",
+		"stock": 35,
+		"id": 6
+	}
+
+]
