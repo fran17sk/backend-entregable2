@@ -64,7 +64,7 @@ class ProductManager {
 
     async showProducts(path){
         try{
-            const products = await this.getProducts(path)
+            const products = await this.getProducts()
             products.forEach(product => {
                 console.log(JSON.stringify(product))
             });
@@ -76,10 +76,9 @@ class ProductManager {
 
     async getproductById(id){
         try{
-            const products = await this.getProducts(this.path)
+            const products = await this.getProducts()
             const product = products.find((product)=>product.id===id)
             if (product){
-                console.log(product)
                 return product
             }else{
                 throw new Error('Product not found')
@@ -91,15 +90,15 @@ class ProductManager {
         }
     }
 
-    async updateProductById(path,id,product){
+    async updateProductById(id,product){
         try{
-            const products = await this.getProducts(path)
-            const find = await this.getproductById(path,id)
+            const products = await this.getProducts()
+            const find = await this.getproductById(id)
             const index = products.findIndex((p)=>p.id === id)
             if (find) {
                 products[index]={...products[index],...product}
-                fs.unlinkSync(path)
-                fs.writeFileSync(path, JSON.stringify(products))
+                fs.unlinkSync(this.path)
+                fs.writeFileSync(this.path, JSON.stringify(products))
                 console.log('Producto actualizado')
             }else{
                 throw new Error('El id del producto no existe')
@@ -110,14 +109,14 @@ class ProductManager {
         }
     }
 
-    async deleteProductById(path,id){
+    async deleteProductById(id){
         try{
-            const products = await this.getProducts(path);
-            const product = await this.getproductById(path,id)
+            const products = await this.getProducts(this.path);
+            const product = await this.getproductById(id)
             if(product){
                 const newproducts = products.filter((p)=>p.id!==id)
-                fs.unlinkSync(path)
-                fs.writeFileSync(path, JSON.stringify(newproducts))
+                fs.unlinkSync(this.path)
+                fs.writeFileSync(this.path, JSON.stringify(newproducts))
                 console.log("Archivo eliminado")
             }else{
                 console.log('Error al eliminar')

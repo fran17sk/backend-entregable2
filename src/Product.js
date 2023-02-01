@@ -1,11 +1,13 @@
-class Product {
-    constructor(name,description,price,code,urlimg,stock){
+class Product { 
+        constructor(name,description,price,code,status,stock,category,urlimg){
         this.name=name,
         this.description=description,
         this.price=price,
         this.code=code,
-        this.urlimg=urlimg,
-        this.stock=stock
+        this.status=status
+        this.stock=stock,
+        this.category=category,
+        this.urlimg=urlimg
     }
 
     getProduct(){
