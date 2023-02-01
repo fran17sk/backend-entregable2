@@ -65,13 +65,21 @@ class CartManager {
     async getCart(id){
         const carritos = await this.getCarts()
         const index = carritos.findIndex((c)=>c.id===id)
-        return carritos[index]
+        if(index>=0){
+            return carritos[index]
+        }else{
+            throw new Error("Cart not found")
+        }
     }
 
     async getIndexCart(id){
         const carritos = await this.getCarts()
         const index = carritos.findIndex((c)=>c.id===id)
-        return index
+        if (index>=0){
+            return index
+        }else{
+            throw new Error("Cannot find index")
+        }
     }
 
     async addToCart(cid,pid,cuantity){
@@ -104,7 +112,7 @@ class CartManager {
                     }
                     carritos[index]=cart
                     fs.writeFileSync(this.path,JSON.stringify(carritos))
-                    
+                    return true
 
                 }else{
                     return false

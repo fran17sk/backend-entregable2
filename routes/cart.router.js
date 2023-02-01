@@ -20,7 +20,11 @@ router.get('/:cid',async(req,res)=>{
 router.post('/:cid/product/:pid',async(req,res)=>{
     const {cid ,pid} = req.params
     const cart = await cartManager.addToCart(parseInt(cid),parseInt(pid),1)
-    res.json('hola').status(200)
+    if(cart){
+        res.json({mesage:`Producto id: ${pid} agregado correctamente al carrito id ${cid}`}).status(200)
+    }else{
+        res.status(500).json({mesage:'Error al agregar producto'})
+    }
 })
 
 
