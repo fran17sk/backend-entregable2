@@ -11,6 +11,7 @@ router.post('/',async(req,res)=>{
 router.get('/:cid',async(req,res)=>{
     const { cid } = req.params
     const carrito = await cartManager.getCart(parseInt(cid))
+    console.log(carrito)
     if(carrito){
         res.status(200).json({mesage:'carrito encontrado',carrito:carrito})
     }else{

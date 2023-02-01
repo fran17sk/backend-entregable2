@@ -68,7 +68,7 @@ class CartManager {
         if(index>=0){
             return carritos[index]
         }else{
-            throw new Error("Cart not found")
+            return false
         }
     }
 
@@ -91,7 +91,6 @@ class CartManager {
                 const productosid = productos.map((p)=>{return p.id;})
                 if(productosid.includes(pid)){
                     const cart = await this.getCart(cid)
-                    const product = productos.find((p)=>p.id===pid)
                     const IsInCart = cart.products.find(prod => prod.pid === pid)
                     if(IsInCart){
                         const newCart = cart.products.map( prod => {
