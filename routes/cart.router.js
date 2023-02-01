@@ -6,7 +6,11 @@ const cartManager = new CartManager('./files/carritos.json')
 
 router.post('/',async(req,res)=>{
     const cart = await cartManager.createCart()
-    return res.status(200).json({mesage:'Carrito creado con exito'})
+    if (cart){
+        return res.status(200).json({mesage:'Carrito creado con exito',carrito:cart})
+    }else{
+        return res.status(500).json({mesage:'Error inesperado en el servidor'})
+    }
 })
 router.get('/:cid',async(req,res)=>{
     const { cid } = req.params

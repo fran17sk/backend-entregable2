@@ -56,9 +56,10 @@ class CartManager {
             const NewCart = new Cart(id)
             this.carrito.push(NewCart)
             await fs.writeFileSync(this.path,JSON.stringify(this.carrito,null,'\t'))
-            console.log('Carrito creado con exito...')
+            return NewCart
         }catch{
             throw new Error('Error creating cart')
+            return false
         }
     }
 
@@ -69,6 +70,7 @@ class CartManager {
             return carritos[index]
         }else{
             return false
+
         }
     }
 
