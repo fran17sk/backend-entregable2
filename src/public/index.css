@@ -1,0 +1,51 @@
+body{
+    background: rgb(0,62,7);
+    background: linear-gradient(90deg, rgba(0,62,7,1) 0%, rgba(44,205,109,1) 50%, rgba(3,145,173,1) 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.title{
+    font-size: 50px;
+}
+.table{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+.name{
+    width: 150px;
+    text-align: center;
+}
+.description{
+    width: 300px;
+    text-align: center;
+}
+.price{
+    width: 100px;
+    text-align: center;
+}
+.category{
+    width: 150px;
+    text-align: center;
+}
+.stock{
+    width: 100px;
+    text-align: center;
+}
+.data{
+    font-size: 16px;
+}
+.l{
+    padding: 0 20px;
+}
+.l:hover{
+    font-size: 25px;
+    color: aliceblue;
+}
+.containertable{
+    border: solid 1px #000;
+    border-radius: 20px;
+    margin: 10px 80px;
+}

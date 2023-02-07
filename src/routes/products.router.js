@@ -1,15 +1,15 @@
 import { Router } from "express";
 const router = Router()
 
-import { ProductManager } from "../src/ProductManager.js";
-const productManager = new ProductManager('./files/productosprueba.json')
+import { ProductManager } from "../managers/ProductManager.js";
+const productManager = new ProductManager('./src/storage/productosprueba.json')
 
 router.get('/',async(req,res)=>{
     const products = await productManager.getProducts()
     if (req.query.limit && !isNaN(req.query.limit)) {
-        return res.json(products.slice(0, req.query.limit));
+        return res.render('home',{...products});
     }else{
-        return res.json(products);
+        return res.render('home',{products});
     }
 })
 router.get('/:pid',async(req,res) => {

@@ -1,5 +1,5 @@
 import { createRequire } from 'module';
-import { Cart } from './Cart.js';
+import { Cart } from '../class/Cart.js';
 
 const require = createRequire(import.meta.url)
 const fs = require('fs');

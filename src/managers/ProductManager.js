@@ -1,4 +1,4 @@
-import { Product } from "./Product.js"
+import { Product } from "../class/Product.js"
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const fs = require ('fs')
@@ -12,7 +12,8 @@ class ProductManager {
         else {
             this.path = path;
             if (fs.existsSync(path)){
-                this.products = JSON.parse(fs.readFileSync(this.path, "utf-8"))
+                console.log(this.path)
+                this.products =(fs.readFileSync(this.path, "utf-8"))
             }else{
                 this.products = [] ;
                 fs.writeFileSync(path,'')
