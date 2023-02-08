@@ -15,9 +15,23 @@ app.set('views',__dirname+'/views')
 
 import productsRouter from './routes/products.router.js'
 import cartRouter from './routes/cart.router.js'
+import viewsRouter from './routes/views.router.js'
 app.use('/api/productos',productsRouter)
 app.use('/api/carts',cartRouter)
+app.use('/views',viewsRouter)
 
-app.listen(8081, ()=> {
-    console.log('Escuchando puerto 8081')
+const httpServer = app.listen(8080,()=>{
+    console.log('******* Ejecutando servidor *******')
+    console.log('**** Escuchando al puerto 8080 ****')
+})
+
+export const socketServer = new Server(httpServer)
+
+socketServer.on('connection',(socket)=>{
+    console.log(`Usuario conectado ${socket.id}`)
+
+    socket.on('disconnect',()=>{
+        console.log('Uusario desconectado');
+    })
+
 })

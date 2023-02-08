@@ -2,16 +2,17 @@ import { Router } from "express";
 const router = Router()
 
 import { ProductManager } from "../managers/ProductManager.js";
-const productManager = new ProductManager('./src/storage/productosprueba.json')
+export const productManager = new ProductManager('./src/storage/productosprueba.json')
 
 router.get('/',async(req,res)=>{
     const products = await productManager.getProducts()
     if (req.query.limit && !isNaN(req.query.limit)) {
-        return res.render('home',{...products});
+        const productsLimit = products.slice(0,req.query.limit)
+        return res.render('home',{productsLimit});
     }else{
         return res.render('home',{products});
     }
-})
+}) 
 router.get('/:pid',async(req,res) => {
     const productos = await productManager.getProducts()
     const productosid = productos.map((p)=>{return p.id})
@@ -59,5 +60,4 @@ router.delete('/:pid',async(req,res) => {
         return res.status(400).json({error:'Invalid ID'})
     }
 })
-
 export default router
