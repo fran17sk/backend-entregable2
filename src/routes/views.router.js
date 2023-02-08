@@ -16,4 +16,5 @@ router.get('/realtimeproducts',async(req,res) =>{
     const products = await productManager.getProducts()
     res.render('realTimeProducts',{ products, layout: "main" })
 })
+
 export default router

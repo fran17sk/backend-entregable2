@@ -56,6 +56,39 @@ body{
     justify-content: center;
     align-items: center;
 }
+.containerform{
+    display: grid;
+    gap: 10px;
+}
 .label{
-    width: 150px;
+    width: 100px;
+    text-align: center;
+    border: solid 2px #000;
+    border-radius: 15px;
+    background-color: #000;
+    color: aliceblue;
+}
+.input{
+    width: 250px;
+    border-radius: 15px;
+    border: solid 2px #000;
+    margin-left: 10px;
+}
+.submit-container{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+}
+.input-submit{
+    border: solid 2px rgb(0, 0, 0);
+    color: #000;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+}
+.input-submit:hover{
+    border: solid 2px rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+    
 }

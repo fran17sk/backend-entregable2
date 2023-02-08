@@ -20,27 +20,57 @@
         {{/each}}
     </div>
 </div>
-<form action="post" class="formularioflex">
-    <div>
-        <div><label for="" class="label">Nombre</label><input></input></div>
-        <div><label for="" class="label">Description</label><input></input></div>
-        <div><label for="" class="label">Precio</label><input></input></div>
-        <div><label for="" class="label">Code</label><input></input></div>
-        <div><label for="" class="label">Stock</label><input></input></div>
-        <div><label for="" class="label">Categoria</label><input></input></div>
+<form id="formnewprod" class="formularioflex">
+    <h2>FORMULARIO NUEVO PRODUCTO</h2>
+    <div class="containerform">
+        <div><label for="" class="label">Nombre</label><input id="name" class="input" type="text"></input></div>
+        <div><label for="" class="label">Description</label><input id="description" class="input" type="text"></input></div>
+        <div><label for="" class="label">Precio</label><input id="price" class="input" type="number"></input></div>
+        <div><label for="" class="label">Code</label><input id="code" class="input" type="text"></input></div>
+        <div><label for="" class="label">Stock</label><input id="stock" class="input" type="number"></input></div>
+        <div><label for="" class="label">Categoria</label><input id="category" class="input" type="text"></input></div>
+        <div><label for="" class="label">Url Imagen</label><input id="url" class="input" type="text"></input></div>
+        <div class="submit-container"><input class="input-submit" id="submit" type="submit" value="AGREGAR PRODUCTO"></input></div>
+        <div>
+            <p id="mensaje"></p>
+        </div>
     </div>
 </form>
 <script src="/socket.io/socket.io.js"></script>
 <script>
     const socketClient = io()
     
-    socketClient.on("productoAgregado",(products)=>{
+    const formulario = document.getElementById('formnewprod')
+    const nombre = document.getElementById('name')
+    const descripcion = document.getElementById('description')
+    const precio = document.getElementById('price')
+    const codigo = document.getElementById('code')
+    const stockk = document.getElementById('stock')
+    const categoria = document.getElementById('category')
+    const url = document.getElementById('url')
+    formulario.onsubmit = (e) => {
+        e.preventDefault();
+        const product = {
+            name : nombre.value,
+            description : descripcion.value,
+            price : parseInt(precio.value),
+            code : codigo.value,
+            status : true,
+            stock : parseInt(stockk.value),
+            category : categoria.value
+        }
+        socketClient.emit('addNewProd',product)
+    } 
+
+
+
+
+    socketClient.on("newProd",(products)=>{
         try{
             console.log("Se Agregó un producto")
             //console.log(products.products)
             window.location.reload()
         }catch(error){
-            console.log(error)
         }
     })
     socketClient.on("productoEliminado",(products)=>{

@@ -2,6 +2,7 @@ import express from 'express';
 import { __dirname } from './utils.js';
 import handlebars from 'express-handlebars'
 import { Server, Socket } from 'socket.io'
+import { productManager } from './routes/products.router.js'
 
 const app = express()
 
@@ -34,4 +35,9 @@ socketServer.on('connection',(socket)=>{
         console.log('Uusario desconectado');
     })
 
+    socket.on('addNewProd',async(product)=>{
+        console.log(product)
+        console.log( await productManager.getProducts())
+        const prod = await productManager.addProduct(product)
+    })
 })
