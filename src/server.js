@@ -2,8 +2,9 @@ import express from 'express';
 import { __dirname } from './utils.js';
 import handlebars from 'express-handlebars'
 import { Server, Socket } from 'socket.io'
-import { productManager } from './routes/products.router.js'
-
+import './db/dbConfig.js'
+// import { productManager } from './routes/products.router.js'
+//franciscruz991 3cxGQCZNpb4Wnyn3
 const app = express()
 
 app.use(express.json())
@@ -17,13 +18,17 @@ app.set('views',__dirname+'/views')
 import productsRouter from './routes/products.router.js'
 import cartRouter from './routes/cart.router.js'
 import viewsRouter from './routes/views.router.js'
-app.use('/api/productos',productsRouter)
+import productosRouter from './routes/productos.router.js'
+// app.use('/api/productos',productsRouter)
 app.use('/api/carts',cartRouter)
 app.use('/views',viewsRouter)
+app.use('/api/productos',productosRouter)
 
-const httpServer = app.listen(8080,()=>{
+const PORT = process.env.PORT || 3000
+
+const httpServer = app.listen(PORT,()=>{
     console.log('******* Ejecutando servidor *******')
-    console.log('**** Escuchando al puerto 8080 ****')
+    console.log(`**** Escuchando al puerto ${PORT} ****`)
 })
 
 export const socketServer = new Server(httpServer)
@@ -36,8 +41,8 @@ socketServer.on('connection',(socket)=>{
     })
 
     socket.on('addNewProd',async(product)=>{
-        console.log(product)
-        console.log( await productManager.getProducts())
-        const prod = await productManager.addProduct(product)
+        // console.log(product)
+        // console.log( await productManager.getProducts())
+        // const prod = await productManager.addProduct(product)
     })
 })

@@ -1,16 +1,16 @@
 import { Router } from "express";
-const router = Router()
-
 import { ProductManager } from "../managers/ProductManager.js";
-export const productManager = new ProductManager('./src/storage/productosprueba.json')
+
+const router = Router()
+export const productManager = new ProductManager('./src/storage/productos.json')
 
 router.get('/',async(req,res)=>{
-    const products = await productManager.getProducts()
+    const productos = await productManager.getProducts()
     if (req.query.limit && !isNaN(req.query.limit)) {
-        const productsLimit = products.slice(0,req.query.limit)
+        const productsLimit = productos.slice(0,req.query.limit)
         return res.render('home',{productsLimit});
     }else{
-        return res.render('home',{products});
+        return res.render('home',{productos});
     }
 }) 
 router.get('/:pid',async(req,res) => {

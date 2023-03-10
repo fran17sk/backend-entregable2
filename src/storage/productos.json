@@ -1,0 +1,52 @@
+[
+	{
+		"name": "Producto 2",
+		"description": "este es un producto prueba",
+		"price": 200,
+		"code": "abc12345678912344547",
+		"status": true,
+		"stock": 30,
+		"category": "bike",
+		"id": 2
+	},
+	{
+		"name": "Producto 3",
+		"description": "este es un producto prueba",
+		"price": 1555,
+		"code": "abc1234567891251344547",
+		"status": true,
+		"stock": 1,
+		"category": "bike",
+		"id": 3
+	},
+	{
+		"name": "Producto 4",
+		"description": "este es un producto prueba",
+		"price": 5005,
+		"code": "abc1234567891251525344547",
+		"status": true,
+		"stock": 905,
+		"category": "aromatic",
+		"id": 4
+	},
+	{
+		"name": "Producto 5",
+		"description": "este es un producto prueba",
+		"price": 1255,
+		"code": "abc1234567891251344252547",
+		"status": true,
+		"stock": 185,
+		"category": "mercaderia",
+		"id": 5
+	},
+	{
+		"name": "Producto 6",
+		"description": "este es un producto prueba",
+		"price": 1845,
+		"code": "abc1234567891251344252547",
+		"status": true,
+		"stock": 25,
+		"category": "mercaderia",
+		"id": 5
+	}
+]
